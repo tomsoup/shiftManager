@@ -4,4 +4,7 @@
 //E.G export const EMAIL_CHANGED = 'email_lalalala'
 //We use const instead of default becuz there are multi var
 export const EMAIL_CHANGED = 'email_changed';
-export const PASSWORD_CHANGED = 'password_changed'
+export const PASSWORD_CHANGED = 'password_changed';
+export const LOGIN_USER_SUCCESS = 'login_successful';
+export const LOGIN_USER_FAIL = 'login_fail';
+export const LOGIN_USER = 'login_user';
