@@ -8,3 +8,8 @@ export const PASSWORD_CHANGED = 'password_changed';
 export const LOGIN_USER_SUCCESS = 'login_successful';
 export const LOGIN_USER_FAIL = 'login_fail';
 export const LOGIN_USER = 'login_user';
+
+export const EMPLOYEE_UPDATE = 'employee_update';
+export const EMPLOYEE_CREATE = 'employee_create';
+export const EMPLOYEES_FETCH_SUCCESS = 'employees_fetched';
+export const EMPLOYEE_SAVE_SUCCESS = 'employees_save_success';

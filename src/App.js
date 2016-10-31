@@ -4,16 +4,16 @@ import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
-import LoginForm from './components/LoginForm';
+import Router from './Router';
 
 class App extends Component {
   componentWillMount() {
     const config = {
-    apiKey: 'AIzaSyBpEZdHgQf6iTw8Xtt89zN0pFCca2NMueM',
-    authDomain: 'manager-54598.firebaseapp.com',
-    databaseURL: 'https://manager-54598.firebaseio.com',
-    storageBucket: '',
-    messagingSenderId: '443494029225'
+      apiKey: 'AIzaSyBpEZdHgQf6iTw8Xtt89zN0pFCca2NMueM',
+      authDomain: 'manager-54598.firebaseapp.com',
+      databaseURL: 'https://manager-54598.firebaseio.com',
+      storageBucket: '',
+      messagingSenderId: '443494029225'
   };
     firebase.initializeApp(config);
   }
@@ -22,7 +22,7 @@ class App extends Component {
     // Inside redux app, we must provide at least one reducer
     return (
       <Provider store={store}>
-        <LoginForm />
+        <Router />
       </Provider>
     );
   }
