@@ -16,7 +16,9 @@ export const employeesFetch = () => {
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/employees`)
       .on('value', snapshot => {
+        console.log(snapshot.val());
         dispatch({
+
           //snapshot is not the actual data, just a description/metadata of the data
           // snapshot.val() is the actual data
           type: EMPLOYEES_FETCH_SUCCESS, payload: snapshot.val() });
@@ -54,6 +56,19 @@ export const employeeSave = ({ name, phone, shift, uid }) => {
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
       .set({ name, phone, shift })
+      .then(() => {
+        dispatch({ type: EMPLOYEE_SAVE_SUCCESS });
+        Actions.employeeList({ type: 'reset' });
+      });
+  };
+};
+
+export const employeeDelete = ({ uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+      .remove()
       .then(() => {
         dispatch({ type: EMPLOYEE_SAVE_SUCCESS });
         Actions.employeeList({ type: 'reset' });

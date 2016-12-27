@@ -11,8 +11,8 @@ import ListItem from './ListItem';
 
 class EmployeeList extends Component {
   componentWillMount() {
+    console.log(this.props);
     this.props.employeesFetch();
-
     this.createDataSource(this.props);
   }
 
@@ -28,6 +28,7 @@ class EmployeeList extends Component {
   //this will create a new employeeList not matter what
   // this will avoid employeeLIst staying in the globalstate
   createDataSource({ employees }) {
+    console.log(employees);
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
@@ -57,6 +58,7 @@ const mapStateToProps = state => {
   // state.employees is the object
   // for each key/value pair
   // val is the name, phone and shift
+
   const employees = _.map(state.employees, (val, uid) => {
       // end result { name: Tom, phone: 123 etc}
       return { ...val, uid };

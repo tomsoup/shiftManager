@@ -17,7 +17,6 @@ class LoginForm extends Component {
 
   onButtonPress() {
     const { email, password } = this.props;
-
     this.props.loginUser({ email, password });
   }
 
@@ -26,11 +25,10 @@ class LoginForm extends Component {
     if (this.props.loading) {
       return <Spinner size="large" />;
     }
-
     return (
       <Button onPress={this.onButtonPress.bind(this)}>
         Login
-      </Button>  
+      </Button>
     );
   }
 
