@@ -28,7 +28,6 @@ class EmployeeList extends Component {
   //this will create a new employeeList not matter what
   // this will avoid employeeLIst staying in the globalstate
   createDataSource({ employees }) {
-    console.log(employees);
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });

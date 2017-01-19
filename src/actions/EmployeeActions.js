@@ -4,7 +4,8 @@ import {
   EMPLOYEE_UPDATE,
   EMPLOYEE_CREATE,
   EMPLOYEES_FETCH_SUCCESS,
-  EMPLOYEE_SAVE_SUCCESS
+  EMPLOYEE_SAVE_SUCCESS,
+  EMPLOYEE_CREATE_INIT
 } from './types';
 
 
@@ -16,7 +17,6 @@ export const employeesFetch = () => {
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/employees`)
       .on('value', snapshot => {
-        console.log(snapshot.val());
         dispatch({
 
           //snapshot is not the actual data, just a description/metadata of the data
@@ -26,6 +26,11 @@ export const employeesFetch = () => {
   };
 };
 
+export const employeeCreateInit = () => {
+  return {
+    type: EMPLOYEE_CREATE_INIT
+  };
+};
 
 //The value of the string does not have to equal to variable type
 // prop is the key, value is the value
@@ -36,10 +41,12 @@ export const employeeUpdate = ({ prop, value }) => {
   };
 };
 
+
+  //pretend we are using redux-thunk
+
 export const employeeCreate = ({ name, phone, shift }) => {
   const { currentUser } = firebase.auth();
 
-  //pretend we are using redux-thunk
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/employees`)
       .push({ name, phone, shift })
